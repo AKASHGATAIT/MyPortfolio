@@ -1,0 +1,46 @@
+<section class="skills-section">
+    <div class="section-header">
+        <span class="section-tag">MY EXPERTISE</span>
+        <h2>Skills & <span>Technologies</span></h2>
+        <p>
+            Technologies and tools I use to build responsive applications,
+            develop scalable backend systems, and solve real-world problems.
+        </p>
+    </div>
+
+    <div class="skills-grid">
+        <mat-card class="skill-card" appearance="outlined" *ngFor="let skill of SkillList; let i = index">
+            <mat-card-header>
+                <div class="skill-icon" [ngClass]="'icon-' + i">
+                    <i [class]="skill.Icon"></i>
+                </div>
+                <div class="skill-heading">
+                    <mat-card-title>{{ skill.Title }}</mat-card-title>
+                    <mat-card-subtitle>{{ skill.Description }}</mat-card-subtitle>
+                </div>
+
+            </mat-card-header>
+            <mat-card-content>
+                <div class="skill-chips">
+                    <mat-chip-set arialabel="Technology skills">
+                        <mat-chip *ngFor="let technology of skill.SubjectKnown">{{ technology }}</mat-chip>
+                    </mat-chip-set>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="skills-footer">
+        <div class="footer-icon">
+            <i class="fa-solid fa-lightbulb"></i>
+        </div>
+
+        <div class="footer-content">
+            <h3>Always Learning, Always Building</h3>
+            <p>
+                Continuously improving my technical knowledge and exploring
+                new technologies to create better digital solutions.
+            </p>
+        </div>
+    </div>
+</section>

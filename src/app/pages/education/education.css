@@ -1,0 +1,400 @@
+.education-section {
+    background: #f8fafc;
+    min-height: 100vh;
+    padding: 40px 8%;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 65px;
+}
+
+.section-tag {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-header h1 {
+    font-size: 42px;
+    margin: 15px 0;
+    color: #0f172a;
+}
+
+.section-header h1 span {
+    color: #2563eb;
+}
+
+.section-header p {
+    color: #000000;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.timeline {
+    margin: auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 25px;
+    bottom: 25px;
+    width: 2px;
+    background: #cbd5e1;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 85px;
+    margin-bottom: 40px;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 25px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    border: 5px solid #dbeafe;
+    z-index: 1;
+}
+
+.education-card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    transition: 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.10);
+    border-color: #93c5fd;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.duration {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.duration i {
+    margin-right: 6px;
+    color: #2563eb;
+}
+
+.status {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.education-card h2 {
+    color: #0f172a;
+    font-size: 22px;
+    margin: 0 0 8px;
+}
+
+.education-card h3 {
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.institution {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: black;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.institution h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.location {
+    color: black;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.institution i,
+.location i {
+    color: #2563eb;
+}
+
+.description {
+    color: black;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 10px 0;
+}
+
+.score {
+    background: #eff6ff;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    font-size: 16px;
+}
+
+.score strong {
+    color: #000000;
+    font-size: 17px;
+}
+
+.subjects {
+    margin-top: 20px;
+}
+
+.subjects h4 {
+    color: #0f172a;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.subject-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.subject-list span {
+    background: #f1f5f9;
+    color: #000000;
+    padding: 7px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.tbl-container {
+    margin-top: 25px;
+    width: 100%;
+}
+
+.tbl-container mat-accordion {
+    display: block;
+    width: 100%;
+}
+
+.tbl-container mat-expansion-panel {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px !important;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.title-heading {
+    background: #eff6ff;
+    min-height: 55px;
+    padding: 0 18px;
+}
+
+.title-heading:hover {
+    background: #dbeafe !important;
+}
+
+.title-heading mat-panel-title {
+    color: #1e40af;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-heading mat-panel-description {
+    color: #2563eb;
+    justify-content: flex-end;
+    flex-grow: 0;
+}
+
+.result-table-container {
+    width: 100%;
+    margin-top: 15px;
+    overflow-x: auto;
+}
+
+.result-table-container h3 {
+    font-size: 18px;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+    background: #ffffff;
+}
+
+.result-table thead {
+    background: #1e40af;
+    color: white;
+}
+
+.result-table th {
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.result-table td {
+    padding: 13px 12px;
+    text-align: center;
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.result-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.result-table tbody tr:hover {
+    background: #eff6ff;
+}
+
+.pass-status {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .education-section {
+        padding: 55px 5%;
+    }
+
+    .section-header h1 {
+        font-size: 32px;
+    }
+
+    .timeline-item {
+        padding-left: 65px;
+    }
+
+    .timeline::before {
+        left: 21px;
+    }
+
+    .timeline-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .education-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .education-section {
+        padding: 40px 5%;
+    }
+
+    .section-header h1 {
+        font-size: 28px;
+    }
+
+    .section-header p {
+        font-size: 14px;
+    }
+
+    .timeline-item {
+        padding-left: 0;
+        padding-top: 55px;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-icon {
+        top: 0;
+        left: 15px;
+    }
+
+    .education-card {
+        padding: 18px;
+    }
+
+    .education-card h2 {
+        font-size: 19px;
+    }
+
+    .score {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .card-top {
+        align-items: flex-start;
+    }
+
+    .title-heading {
+        padding: 0 10px;
+    }
+
+    .title-heading mat-panel-title {
+        font-size: 12px;
+    }
+
+    .title-heading mat-panel-description {
+        font-size: 12px;
+    }
+
+    .result-table-container h3 {
+        font-size: 16px;
+    }
+
+    .result-table th,
+    .result-table td {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}

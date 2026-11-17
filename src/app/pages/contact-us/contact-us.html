@@ -1,0 +1,152 @@
+<section class="contact-section">
+  <div class="contact-container">
+    <div class="section-heading">
+      <span class="section-tag">GET IN TOUCH</span>
+      <h1>Let's Work <span>Together</span></h1>
+      <p>Have a project in mind, a question, or just want to connect? Feel free to send me a message. I'd love to hear
+        from you!</p>
+    </div>
+    <div class="contact-content">
+      <div class="contact-info">
+        <div class="info-heading">
+          <h2>Let's Connect</h2>
+          <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <img class="image" src="https://thumbs.dreamstime.com/b/%D0%BF%D0%B5%D1%87%D0%B0%D1%82%D1%8C-201003176.jpg"
+              alt="Email Logo">
+          </div>
+          <div class="info-details">
+            <h3>Email Me</h3><a href="mailto:yourmail@gmail.com">akashgatait87@gmail.com</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <img class="image" src="https://images.icon-icons.com/2642/PNG/512/google_map_location_logo_icon_159350.png"
+              alt="location Logo">
+          </div>
+          <div class="info-details">
+            <h3>Location</h3>
+            <p>Belgharia, Kolkata, West Bengal, India, 700056</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <img class="image"
+              src="https://img.magnific.com/free-vector/businessman-entrepreneur-working-office-desk_3446-678.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Current Job role">
+          </div>
+
+          <div class="info-details">
+            <h3>Current Role</h3>
+            <p>Web Developer using Angular & .NET</p>
+          </div>
+        </div>
+        <div class="availability-card">
+          <span class="availability-dot"></span>
+
+          <div>
+            <h3>Open to Opportunities</h3>
+            <p>Interested in collaborating on exciting projects and exploring new opportunities.
+            </p>
+          </div>
+        </div>
+        <div class="social-section">
+          <h3>Connect With Me</h3>
+          <div class="social-links">
+            <a href="https://github.com/akashgatait0509" target="_blank" aria-label="GitHub">
+              <img class="image" src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
+                alt="GitHub Logo" width="30" height="30">
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+              <img class="image"
+                src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk4Mi1kMy0xMC5wbmc.png"
+                alt="">
+            </a>
+            <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram">
+              <img class="image"
+                src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtNTM1LXNvY2lhbC0wMDMucG5n.png"
+                alt="">
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="contact-form-wrapper">
+        <div class="form-heading">
+          <h2>Send Me a Message</h2>
+          <p>Fill out the form below and I'll get back to you.</p>
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" id="name" formControlName="name" placeholder="Enter your full name"
+                [class.invalid]="f.name.invalid && f.name.touched">
+            </div>
+
+            <div class="error-message" *ngIf="f.name.touched && f.name.errors">
+              <span *ngIf="f.name.errors['required']">Name is required.</span>
+              <span *ngIf="f.name.errors['minlength']">Name must contain at least 3 characters.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" id="email" formControlName="email" placeholder="Enter your email address"
+                [class.invalid]="f.email.invalid && f.email.touched">
+            </div>
+
+            <div class="error-message" *ngIf="f.email.touched && f.email.errors">
+              <span *ngIf="f.email.errors['required']">Email is required.</span>
+              <span *ngIf="f.email.errors['email']">Please enter a valid email address.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-pen-to-square"></i>
+              <input type="text" id="subject" formControlName="subject" placeholder="What is this about?"
+                [class.invalid]="f.subject.invalid && f.subject.touched">
+            </div>
+
+            <div class="error-message" *ngIf="f.subject.touched && f.subject.errors">
+              <span *ngIf="f.subject.errors['required']">Subject is required. </span>
+              <span *ngIf="f.subject.errors['minlength']">Subject must contain at least 5 characters.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <div class="textarea-wrapper">
+              <i class="fa-regular fa-message"></i>
+              <textarea id="message" rows="1" formControlName="message" placeholder="Write your message here..."
+                maxlength="1000" [class.invalid]="f.message.invalid && f.message.touched">
+              </textarea>
+            </div>
+
+            <div class="message-footer">
+              <div class="error-message">
+                <span *ngIf="f.message.touched && f.message.errors?.['required']">Message is required.</span>
+                <span *ngIf="f.message.touched && f.message.errors?.['minlength']">Message must contain at least 10
+                  characters.</span>
+              </div>
+              <span class="character-count">{{ f.message.value?.length || 0 }}/1000 </span>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="contactForm.invalid || isSending">
+            <span>{{ isSending ? 'Sending...' : 'Send Message' }}</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p class="form-note"><i class="fa-solid fa-lock"></i>Your information will only be used to respond to your
+            message.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

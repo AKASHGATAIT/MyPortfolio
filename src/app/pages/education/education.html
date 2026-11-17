@@ -1,0 +1,149 @@
+
+
+<section class="education-section">
+    <div class="section-header">
+        <span class="section-tag">MY ACADEMIC JOURNEY</span>
+        <h1>My <span>Educational Background</span></h1>
+        <p>My educational background and academic journey that helped me build a strong foundation.</p>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item" *ngFor="let edu of educationList; let i = index">
+            <div class="timeline-icon">{{ edu.icon }}</div>
+            <div class="education-card">
+                <div class="card-top">
+                    <span class="duration">{{ edu.duration }}</span>
+                    <span class="status">{{ edu.status }}</span>
+                </div>
+                <h2>{{ edu.degree }}</h2>
+                <h3>{{ edu.stream }}</h3>
+                <div class="institution">
+                    <h4>{{ edu.institution }}</h4>
+                </div>
+                <div class="location">{{ edu.location }}</div>
+                <p class="description">{{ edu.description }}</p>
+                <div class="score">
+                    <span>Academic Performance</span>
+                    <strong>{{ edu.score }}</strong>
+                </div>
+                <div class="subjects">
+                    <h4>Key Subjects</h4>
+                    <div class="subject-list">
+                        <span *ngFor="let subject of edu.subjects">{{ subject }}</span>
+                    </div>
+                </div>
+                @if (edu.degree === 'Bachelor of Technology (B.Tech)') {
+                <div class="tbl-container">
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header class="title-heading">
+                                <mat-panel-title>Click to Show Semester Results</mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="result-table-container">
+                                <h3>Semester-wise Academic Results</h3>
+                                <table class="result-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Semester</th>
+                                            <th>SGPA</th>
+                                            <th>Result</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let result of semesterResults; let j = index">
+                                            <td>{{ j + 1 }}</td>
+                                            <td>{{ result.semester }}</td>
+                                            <td>{{ result.sgpa }}</td>
+                                            <td><span class="pass-status">{{ result.result }}</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+                }
+                @if (edu.degree === 'Higher Secondary (12th)') {
+                <div class="tbl-container">
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header class="title-heading">
+                                <mat-panel-title>
+                                    <i class="fa-solid fa-book-open"></i>Click to Show 12th Result
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="result-table-container">
+                                <h3>Higher Secondary Examination Results</h3>
+                                <table class="result-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Subject</th>
+                                            <th>Full Marks</th>
+                                            <th>Obtained</th>
+                                            <th>Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let result of higherSecondaryResults; let j = index">
+                                            <td>{{ j + 1 }}</td>
+                                            <td>{{ result.subject }}</td>
+                                            <td>{{ result.fullMarks }}</td>
+                                            <td>{{ result.obtained }}</td>
+                                            <td>{{ result.grade }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+                }
+                @if (edu.degree === 'Secondary Education (10th)') {
+                <div class="tbl-container">
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header class="title-heading">
+                                <mat-panel-title>
+                                    <i class="fa-solid fa-book"></i>
+                                    Click to Show 10th Result
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="result-table-container">
+                                <h3>Secondary Examination Results</h3>
+                                <table class="result-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No.</th>
+                                            <th>Subject</th>
+                                            <th>Full Marks</th>
+                                            <th>Obtained</th>
+                                            <th>Grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let result of secondaryResults; let j = index">
+                                            <td>{{ j + 1 }}</td>
+                                            <td>{{ result.subject }}</td>
+                                            <td>{{ result.fullMarks }}</td>
+                                            <td>{{ result.obtained }}</td>
+                                            <td>{{ result.grade }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

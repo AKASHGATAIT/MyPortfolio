@@ -1,0 +1,51 @@
+<section class="projects-section">
+    <div class="section-header">
+        <span class="section-tag">MY WORK</span>
+        <h1>My <span>Projects</span></h1>
+        <p>Explore my projects, technical implementations and problem-solving experiences.
+            Each project represents my passion for learning and building innovative solutions.
+        </p>
+    </div>
+
+    <div class="project-filters">
+        <button *ngFor="let category of categories" [class.active]="selectedCategory === category"
+            (click)="filterProjects(category)">{{ category }}
+        </button>
+    </div>
+    <div class="project-count">
+        <span>Showing {{ filteredProjects.length }} Projects</span>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-card" *ngFor="let project of filteredProjects; let i = index">
+            <div class="project-content">
+                <span class="project-category">{{ project.category }}</span>
+                <h2>{{ project.title }} <h6>{{ project.duration }}</h6>
+                </h2>
+                <h4>{{ project.subtitle }}</h4>
+                <p class="project-description">{{ project.description }}</p>
+                <div class="technology-section">
+                    <h3>Technologies Used</h3>
+                    <div class="technology-list">
+                        <span *ngFor="let tech of project.technologies"> {{ tech }}</span>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <a [href]="project.github" target="_blank" rel="noopener noreferrer" class="github-btn">
+                        <i class="fa-brands fa-github"></i>GitHub
+                    </a>
+                    <a *ngIf="project.demo" [href]="project.demo" target="_blank" rel="noopener noreferrer"
+                        class="demo-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="empty-state" *ngIf="filteredProjects.length === 0">
+        <i class="fa-solid fa-folder-open"></i>
+        <h2>No Projects Found</h2>
+        <p>There are no projects in this category.</p>
+    </div>
+</section>

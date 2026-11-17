@@ -1,0 +1,265 @@
+.hero-section {
+    background: #0f172a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 50px 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.hero-container {
+    width: 85%;
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-content {
+    max-width: 620px;
+}
+
+.welcome-text {
+    color: #38bdf8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    display: inline-block;
+}
+
+.hero-content h1 {
+    color: #f8fafc;
+    font-size: clamp(38px, 4.5vw, 58px);
+    font-weight: 750;
+    line-height: 1.2;
+    margin: 0 0 12px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content h2 {
+    color: #e2e8f0;
+    font-size: 29px;
+    font-weight: 650;
+    margin: 0 0 20px;
+}
+
+.hero-description {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 540px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 650;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background: linear-gradient(100deg, #0ea5e9, #6366f1, #9333ea);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.btn-outline {
+    color: #38bdf8;
+    background: transparent;
+    border: 1px solid #38bdf8;
+}
+
+.btn-outline:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    transform: translateY(-4px);
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 50%;
+    color: #e2e8f0;
+    font-size: 17px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    color: white;
+    transform: translateY(-5px);
+}
+
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 70%);
+    border-radius: 50%;
+    filter: blur(25px);
+}
+
+.profile-image {
+    width: 430px;
+    height: 430px;
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #64748b;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.profile-image:hover img {
+    transform: scale(1.06);
+}
+
+.image {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .hero-container {
+        width: 90%;
+        gap: 30px;
+    }
+
+    .profile-image {
+        width: 340px;
+        height: 340px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        padding: 55px 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 45px;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin: auto;
+        order: 1;
+    }
+
+    .hero-image-container {
+        order: 0;
+    }
+
+    .profile-image {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons,
+    .social-links {
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        width: 90%;
+    }
+
+    .profile-image {
+        width: 230px;
+        height: 230px;
+    }
+
+    .hero-content h1 {
+        font-size: 33px;
+    }
+
+    .hero-content h2 {
+        font-size: 21px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 11px 19px;
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,259 @@
+<div class="invoice-container">
+
+  <div class="page-heading">
+    <h1>GST Invoice Generator</h1>
+    <p>Create and download an Indian GST tax invoice in PDF format.</p>
+  </div>
+
+  <form [formGroup]="invoiceForm">
+
+    <!-- Invoice details -->
+    <section class="form-section">
+      <h2>Invoice Information</h2>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Invoice Number *</label>
+          <input type="text" formControlName="invoiceNumber">
+        </div>
+
+        <div class="form-group">
+          <label>Invoice Date *</label>
+          <input type="date" formControlName="invoiceDate">
+        </div>
+
+        <div class="form-group">
+          <label>Due Date</label>
+          <input type="date" formControlName="dueDate">
+        </div>
+
+        <div class="form-group">
+          <label>Reverse Charge</label>
+          <select formControlName="reverseCharge">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seller details -->
+    <section class="form-section">
+      <h2>Supplier / Seller Details</h2>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Business Name *</label>
+          <input type="text" formControlName="sellerName"
+                 placeholder="Enter business name">
+        </div>
+
+        <div class="form-group">
+          <label>GSTIN *</label>
+          <input type="text" maxlength="15"
+                 formControlName="sellerGstin"
+                 placeholder="15-character GSTIN">
+        </div>
+
+        <div class="form-group">
+          <label>State *</label>
+          <input type="text" formControlName="sellerState"
+                 placeholder="e.g. West Bengal">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Business Address *</label>
+          <textarea formControlName="sellerAddress"
+                    placeholder="Enter complete business address"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buyer details -->
+    <section class="form-section">
+      <h2>Buyer / Recipient Details</h2>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Customer / Business Name *</label>
+          <input type="text" formControlName="buyerName">
+        </div>
+
+        <div class="form-group">
+          <label>Buyer GSTIN</label>
+          <input type="text" maxlength="15"
+                 formControlName="buyerGstin"
+                 placeholder="Leave blank if unregistered">
+        </div>
+
+        <div class="form-group">
+          <label>Place of Supply *</label>
+          <input type="text" formControlName="placeOfSupply"
+                 placeholder="e.g. West Bengal">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Buyer Address *</label>
+          <textarea formControlName="buyerAddress"
+                    placeholder="Enter customer address"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supply type -->
+    <section class="form-section">
+      <h2>GST Configuration</h2>
+
+      <div class="form-group">
+        <label>Type of Supply *</label>
+        <select formControlName="supplyType">
+          <option value="intra">Intra-State (CGST + SGST)</option>
+          <option value="inter">Inter-State (IGST)</option>
+        </select>
+      </div>
+
+      <p class="help-text">
+        Select intra-state when the supplier and place of supply are in the
+        same state. Select inter-state when they are in different states.
+      </p>
+    </section>
+
+    <!-- Items -->
+    <section class="form-section">
+      <div class="section-heading">
+        <h2>Product / Service Details</h2>
+        <button type="button" class="add-btn" (click)="addItem()">
+          + Add Item
+        </button>
+      </div>
+
+      <div formArrayName="items">
+
+        <div class="item-card"
+             *ngFor="let item of items.controls; let i = index"
+             [formGroupName]="i">
+
+          <div class="item-heading">
+            <h3>Item {{ i + 1 }}</h3>
+
+            <button type="button"
+                    class="remove-btn"
+                    (click)="removeItem(i)"
+                    [disabled]="items.length === 1">
+              Remove
+            </button>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Product / Service Description *</label>
+              <input type="text" formControlName="description"
+                     placeholder="Enter product or service name">
+            </div>
+
+            <div class="form-group">
+              <label>HSN / SAC Code *</label>
+              <input type="text" formControlName="hsn"
+                     placeholder="Enter HSN/SAC">
+            </div>
+
+            <div class="form-group">
+              <label>Quantity *</label>
+              <input type="number" min="0.01" step="0.01"
+                     formControlName="quantity">
+            </div>
+
+            <div class="form-group">
+              <label>Rate (₹) *</label>
+              <input type="number" min="0" step="0.01"
+                     formControlName="rate">
+            </div>
+
+            <div class="form-group">
+              <label>Discount (₹)</label>
+              <input type="number" min="0" step="0.01"
+                     formControlName="discount">
+            </div>
+
+            <div class="form-group">
+              <label>GST Rate *</label>
+              <select formControlName="gstRate">
+                <option [ngValue]="0">0%</option>
+                <option [ngValue]="5">5%</option>
+                <option [ngValue]="12">12%</option>
+                <option [ngValue]="18">18%</option>
+                <option [ngValue]="28">28%</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="item-calculation">
+            <span>
+              Taxable Value:
+              <strong>{{ getItemTaxableAmount(item) | currency:'INR' }}</strong>
+            </span>
+
+            <span>
+              GST Amount:
+              <strong>{{ getItemGst(item) | currency:'INR' }}</strong>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Invoice summary -->
+    <section class="form-section summary-section">
+      <h2>Invoice Summary</h2>
+
+      <div class="summary-row">
+        <span>Taxable Amount</span>
+        <strong>{{ subtotal | currency:'INR' }}</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Total Discount</span>
+        <strong>{{ totalDiscount | currency:'INR' }}</strong>
+      </div>
+
+      <div class="summary-row" *ngIf="invoiceForm.get('supplyType')?.value === 'intra'">
+        <span>CGST</span>
+        <strong>{{ cgst | currency:'INR' }}</strong>
+      </div>
+
+      <div class="summary-row" *ngIf="invoiceForm.get('supplyType')?.value === 'intra'">
+        <span>SGST</span>
+        <strong>{{ sgst | currency:'INR' }}</strong>
+      </div>
+
+      <div class="summary-row" *ngIf="invoiceForm.get('supplyType')?.value === 'inter'">
+        <span>IGST</span>
+        <strong>{{ igst | currency:'INR' }}</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Total GST</span>
+        <strong>{{ totalGst | currency:'INR' }}</strong>
+      </div>
+
+      <div class="summary-row grand-total">
+        <span>Grand Total</span>
+        <strong>{{ grandTotal | currency:'INR' }}</strong>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="button" class="reset-btn" (click)="resetForm()">
+        Reset Form
+      </button>
+
+      <button type="button" class="generate-btn" (click)="generatePDF()">
+        <i class="fas fa-file-pdf"></i>
+        Generate GST Invoice PDF
+      </button>
+    </div>
+
+  </form>
+</div>
